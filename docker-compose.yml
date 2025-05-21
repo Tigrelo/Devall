@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: devall
+    environment:
+      MYSQL_ROOT_PASSWORD: devall
+      MYSQL_DATABASE: devall
+      MYSQL_USER: devall
+      MYSQL_PASSWORD: devall
+    ports:
+      - "3306:3306"
+    volumes:
+      - devall-data:/var/lib/mysql
+
+volumes:
+  devall-data:
