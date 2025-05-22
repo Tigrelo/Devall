@@ -1,37 +1,56 @@
-package com.isaac.devall.model;
+package com.devall.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "post")
+@Table(name = "posts")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Post {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String title;
+    @JsonProperty("titulo")
+    @Column(name = "titulo", nullable = false)
+    private String titulo;
 
-    @Column(length = 1000)
-    private String summary;
+    @JsonProperty("resumo")
+    @Column(name = "resumo", length = 1000)
+    private String resumo;
 
+    @Column(name = "url", nullable = false)
     private String url;
 
-    @Column(name = "published_at")
-    private LocalDateTime publishedAt;
+    @JsonProperty("dataPublicacao")
+    @Column(name = "data_publicacao", nullable = false)
+    private LocalDateTime dataPublicacao;
 
-    @ManyToOne
-    @JoinColumn(name = "author_id")
-    private Usuario author;
+    @JsonProperty("autor")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario autor;  // Agora referenciando a entidade Usuario
 
-    @ManyToOne
-    @JoinColumn(name = "blog_id")
-    private Blog blog;
+    @JsonProperty("site")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "site_id", nullable = false)
+    private Site site;
+
+    @Column(name = "criado_em", updatable = false)
+    @CreationTimestamp
+    private LocalDateTime criadoEm;
+
+    @Column(name = "atualizado_em")
+    @UpdateTimestamp
+    private LocalDateTime atualizadoEm;
 }

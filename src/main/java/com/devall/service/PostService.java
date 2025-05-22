@@ -1,6 +1,6 @@
-package com.isaac.devall.service;
+package com.devall.service;
 
-import com.isaac.devall.model.Post;
+import com.devall.model.Post;
 import com.devall.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

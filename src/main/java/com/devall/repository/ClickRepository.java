@@ -1,6 +1,6 @@
-package com.isaac.devall.repository;
+package com.devall.repository;
 
-import com.isaac.devall.model.Click;
+import com.devall.model.Click;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClickRepository extends JpaRepository<Click, Long> {

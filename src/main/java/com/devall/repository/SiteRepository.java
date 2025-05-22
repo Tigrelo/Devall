@@ -1,9 +1,10 @@
-package com.isaac.devall.repository;
+package com.devall.repository;
 
-import com.isaac.devall.entity.Site;
+
+import com.devall.model.Site;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface SiteRepository extends JpaRepository<Site, Integer> {
+public interface SiteRepository extends JpaRepository<Site, Long> {
 }
