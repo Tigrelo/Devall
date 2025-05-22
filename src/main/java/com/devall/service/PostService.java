@@ -1,7 +1,7 @@
 package com.isaac.devall.service;
 
 import com.isaac.devall.model.Post;
-import com.isaac.devall.repository.PostRepository;
+import com.devall.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,10 +23,14 @@ public class PostService {
     }
 
     public Post save(Post post) {
-        return (Post) postRepository.save(post);
+        return postRepository.save(post);
     }
 
     public void deleteById(Long id) {
         postRepository.deleteById(id);
+    }
+
+    public List<Post> searchByContent(String q) {
+        return postRepository.searchByTitleOrSummary(q);
     }
 }
